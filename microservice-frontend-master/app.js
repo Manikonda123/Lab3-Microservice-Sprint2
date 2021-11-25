@@ -141,7 +141,15 @@ function setComment($id) {
 }
 
 function addToCart($id) {
-    // function body
+    
+    let email =$.trim($('#email').val());
+    if( email !='') {
+        // Save data to sessionStorage
+        sessionStorage.setItem('email', email);
+        // code
+    } else {
+        alert("Please enter your email at top of page.");
+    }
 }
 
 function toShoppingCart(){
