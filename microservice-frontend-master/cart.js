@@ -51,11 +51,11 @@ function getCart($email) {
 
 function deleteItem($id) {
     $.ajax({
-        url: Url + 'Cart/'+ $(this).attr('id'),
-        type: 'delete',
-        dataType: 'json',
+        url: Url + "Cart/"+ $(this).attr("id"),
+        type: "delete",
+        dataType: "json",
         data: {"id":$id},
-        contentType: 'text/plain',
+        contentType: "text/plain",
         success: function (result) {
             console.log(result);
         }
