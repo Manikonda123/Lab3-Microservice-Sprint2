@@ -53,6 +53,13 @@ function deleteItem($id) {
     //function body
 }
 
-function checkOut() {
-    // function body
+function checkOut($email) {
+    $.ajax({
+        url: Url + 'Cart',
+        type: 'put',
+        dataType: 'json',
+        data: {"email":$email},
+        contentType: 'text/plain',
+        //success: function (data) {
+    });
 }
