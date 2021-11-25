@@ -50,7 +50,16 @@ function getCart($email) {
 }
 
 function deleteItem($id) {
-    //function body
+    $.ajax({
+        url: Url + 'Cart/'+ $(this).attr('id'),
+        type: 'delete',
+        dataType: 'json',
+        data: {"id":$id},
+        contentType: 'text/plain',
+        success: function (result) {
+            console.log(result);
+        }
+    });
 }
 
 function checkOut($email) {
