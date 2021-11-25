@@ -60,6 +60,7 @@ function checkOut($email) {
         dataType: 'json',
         data: {"email":$email},
         contentType: 'text/plain',
-        //success: function (data) {
+        success: function (data) {
+         getCart(email)
     });
 }
