@@ -185,7 +185,32 @@ function setComment($id) {
 }
 
 function addToCart($id) {
-    // function body
+    let email =$.trim($('#email').val());
+    if( email !='') {
+        // Save data to sessionStorage
+        sessionStorage.setItem('email', email);
+        $.ajax({
+            url: Url + 'AddToCart',
+            type: 'post',
+            dataType: 'json',
+            data: JSON.stringify({"product_id": $id, "email" : email}),
+            contentType: 'text/plain',
+
+            success: function (data)//Stuff goes here
+            {
+                fetchOneProduct($id);
+            },
+
+            error: function(data) {
+                alert("wrong");
+            }
+
+        });   
+    } else {
+        alert("Please enter your email at top of page.");
+    }
+
+    
 }
 
 function toShoppingCart(){
