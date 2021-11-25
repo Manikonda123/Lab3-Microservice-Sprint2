@@ -57,12 +57,56 @@ function fetchProductList() {
         error: function (data) {
             alert("Error while fetching data.");
         }
-
     });
 }
 
 function fetchOneProduct($id) {
     // function body
+    var product = '';
+    $.ajax({
+        url: Url + 'GetOneProduct',
+        type: 'get',
+        dataType: 'json',
+        contentType: 'text/plain',
+        data: { "product_id":$id },
+        success: function (data) {
+            $.each(data['data']['List'], function (i, item) {
+                product = '<div class="card justify-content-center pagination-centered" style="width:900px; height:auto">\n' +
+                    ' <div class="container-fliud">\n' +
+                    '     <div class="wrapper row">\n' +
+                    '        <div class="preview col-md-6">\n' +
+                    '           <div class="preview-pic tab-content">\n' +
+                    '              <div class="tab-pane active" id="pic-1"><img src="' + item['image'] + '" /></div>\n' +
+                    '         </div>\n' +
+                    '    </div>\n' +
+                    '         <div class="details col-md-6">\n' +
+                    '            <h3 class="product-title" style="margin-top: 10px">' + item['title'] + '...</h3>\n' +
+                    '           <div class="rating">\n' +
+                    '               <button class="btn btn-info" id="comment" onclick="......">Submit Comment</button>\n' +
+                    '           </div>\n' +
+                    '          <p class="product-description">' + item['title'] + '</p>\n' +
+                    '        <h5 class="price">Current Price: <span>' + item['price'] + '</span></h5>\n' +
+                    '        <h6 class="price">Screen Size: <span>' + item['screen_size'] + '</span></h6>\n' +
+                    '       <h6 class="price">Weight: <span>' + item['item_weight'] + '</span></h6>\n' +
+                    '      <h6 class="price">Camera: <span>' + item['camera_description'] + '</span></h6>\n' +
+                    '     <h6 class="price">Operating System: <span>' + item['operating_system'] + '</span></h6>\n' +
+                    '    <div class="action">\n' +
+                    '       <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal" data-whatever="...">Submit Comment</button>\n' +
+                    '            </div>\n' +
+                    '       </div>\n' +
+                    '   </div>\n' +
+                    '   </div>\n' +
+                    '   </div>\n';
+            });
+                $('#items').html(product);
+                
+        },
+        error: function (data) {
+            alert("Error while fetching data.");
+        }
+
+    });
+
 }
 
 function fetchComments($id) {
